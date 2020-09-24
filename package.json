@@ -1,14 +1,14 @@
 {
-  "name": "webpack-intro",
+  "name": "dinnterest",
   "version": "1.0.0",
-  "description": "",
+  "description": "pinterest clone",
   "main": "src/javascripts/main.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michael Pfohl",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.11.4",
