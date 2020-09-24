@@ -3,6 +3,17 @@
 
 body {
   background-color: rgb(148, 172, 141);
-  color: rgb(52, 0, 0);
+  color: rgb(187, 187, 187);
   text-align: center;
 }
+
+.hide {
+  display: none;
+}
+
+#app {
+  display: flex; 
+  justify-content: center;
+}
+
+@import './components/';
