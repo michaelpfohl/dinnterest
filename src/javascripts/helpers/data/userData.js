@@ -3,26 +3,27 @@ import apiKeys from '../apiKeys.json';
 
 const baseURL = apiKeys.firebaseKeys.databaseURL;
 
-// const getAllUsers = () => {
-//     axios.get(`${baseUrl}/users.json`)
-//       .then((response) => {
-//           const dataUsers = response.data;
-//           const users = [];
-//           if (dataUsers) {
-//               Object.keys(dataUsers).forEach((userId) => {
-//                   users.push(dataUsers[farmerId]);
-//               });
-//           }
-//           ResolvePlugin(users);
-//       })
-//       .catch((error) => console.warn(error));
-// };
+const getAllUsers = () => {
+  axios
+    .get(`${baseURL}/users.json`)
+    .then((response) => {
+      const dataUsers = response.data;
+      const users = [];
+      if (dataUsers) {
+        Object.keys(dataUsers).forEach((userId) => {
+          users.push(dataUsers[userId]);
+        });
+      }
+      return users;
+    })
+    .catch((error) => console.warn(error));
+};
 
 const getUser = (userObj) => {
   axios
     .get(`${baseURL}/users.json?orderBy="uid"&equalTo="${userObj.uid}"`)
     .then((resp) => {
-      if (Object.keys(resp.data).length === 0) {
+      if (Object.values(resp.data).length === 0) {
         axios
           .post(`${baseURL}/users.json`, {
             image: userObj.photoURL,
@@ -49,4 +50,4 @@ const setCurrentUser = (userObj) => {
   return user;
 };
 
-export default { getUser, setCurrentUser };
+export default { getUser, setCurrentUser, getAllUsers };
