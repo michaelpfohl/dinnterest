@@ -4,7 +4,6 @@ import 'firebase/auth';
 const logoutEvent = () => {
   $('#navbar-logout-button').on('click', (e) => {
     e.preventDefault();
-    window.sessionStorage.removeItem('ua');
     firebase.auth().signOut();
     window.location.href = '/';
   });
@@ -21,10 +20,13 @@ const myNavbar = (currentUser) => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item mx-3" id="boards-link">
-        <a class="nav-link" href="#"><i class="fas fa-utensils"></i></i>Boards</a>
+        <a class="nav-link" href="#"><i class="fas fa-utensils"></i></i> Boards</a>
       </li>
       <li class="nav-item mx-3" id="add-board-link">
         <a class="nav-link" href="#"><i class="fas fa-plus-circle"></i> Add A Board</a>
+      </li>
+      <li class="nav-item mx-3" id="add-dinn-link">
+        <a class="nav-link" href="#"><i class="fas fa-plus-circle"></i> Add A Dinn</a>
       </li>
     </ul>
       <ul class="navbar-nav ml-auto">

@@ -10,14 +10,12 @@ const checkLoginStatus = () => {
     if (user) {
       const currentUser = userData.setCurrentUser(user);
       userData.getUser(user);
-      $('#navbar-logout-button').removeClass('hide');
       $('#auth').addClass('hide');
       $('#app').html('');
       navbar.myNavbar(currentUser);
       viewHelper.viewListener('boards-link');
     } else {
       auth.loginButton();
-      $('#navbar-logout-button').addClass('hide');
       $('#auth').removeClass('hide');
     }
   });

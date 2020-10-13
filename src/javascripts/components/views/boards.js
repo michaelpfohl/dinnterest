@@ -3,13 +3,13 @@ import card from '../cards/boardCard';
 
 const boardsView = () => {
   boardsData.getBoards().then((response) => {
-    response.forEach((item) => {
-      if (response.length) {
+    if (response.length) {
+      response.forEach((item) => {
         $('#app').append(card.boardMaker(item));
-      } else {
-        $('#app').append('<h2>NO BOARDS!</h2>');
-      }
-    });
+      });
+    } else {
+      $('#app').append('<h2>Click Add A Board to Get Started!</h2>');
+    }
   });
 };
 

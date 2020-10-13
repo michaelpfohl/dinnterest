@@ -17,4 +17,14 @@ const getBoards = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default { getBoards };
+const addBoard = (data) => axios.post(`${baseURL}/boards.json`, data)
+  .then((response) => {
+    const update = { firebaseKey: response.data.name };
+    axios.patch(`${baseURL}/boards/${response.data.name}.json`, update);
+  }).catch((error) => console.warn(error));
+
+const deleteBoard = (firebaseKey) => {
+  axios.delete(`${baseURL}/boards/${firebaseKey}.json`);
+};
+
+export default { getBoards, addBoard, deleteBoard };

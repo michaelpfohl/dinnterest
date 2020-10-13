@@ -37,7 +37,17 @@ const getUser = (userObj) => {
         console.warn('user exists');
       }
     });
+  return userObj;
 };
+
+const getSingleUser = (userUid) => new Promise((resolve, reject) => {
+  axios.get(`${baseURL}/users.json?orderBy="uid"&equalTo="${userUid}"`)
+    .then((response) => {
+      const user = Object.values(response.data);
+      const thisUser = user[0];
+      resolve(thisUser);
+    }).catch((error) => reject(error));
+});
 
 const setCurrentUser = (userObj) => {
   const user = {
@@ -50,4 +60,9 @@ const setCurrentUser = (userObj) => {
   return user;
 };
 
-export default { getUser, setCurrentUser, getAllUsers };
+export default {
+  getUser,
+  setCurrentUser,
+  getAllUsers,
+  getSingleUser,
+};
